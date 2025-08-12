@@ -5,8 +5,8 @@ databases:
 services:
   - type: redis
     name: telemed-redis
-    ipAllowList: []
     plan: free
+    ipAllowList: []
   - type: web
     name: telemed-backend
     env: docker
@@ -39,14 +39,15 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: BASE_URL
-        generateValue: false
-        value: https://telemed-backend.onrender.com
+        value: https://placeholder-backend-url
       - key: STRIPE_SECRET_KEY
         value: sk_test_
       - key: SENDGRID_API_KEY
         value: SG.
       - key: EMAIL_FROM
         value: no-reply@demo.local
+      - key: CORS_ALLOW_ORIGINS
+        value: "*"
   - type: web
     name: telemed-frontend
     env: node
