@@ -1,0 +1,61 @@
+databases:
+  - name: telemed-postgres
+    databaseName: telemed
+    plan: free
+services:
+  - type: redis
+    name: telemed-redis
+    ipAllowList: []
+    plan: free
+  - type: web
+    name: telemed-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    plan: free
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: telemed-postgres
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: telemed-postgres
+          property: port
+      - key: DB_NAME
+        value: telemed
+      - key: DB_USER
+        fromDatabase:
+          name: telemed-postgres
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: telemed-postgres
+          property: password
+      - key: REDIS_URL
+        fromService:
+          name: telemed-redis
+          type: redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: BASE_URL
+        generateValue: false
+        value: https://telemed-backend.onrender.com
+      - key: STRIPE_SECRET_KEY
+        value: sk_test_
+      - key: SENDGRID_API_KEY
+        value: SG.
+      - key: EMAIL_FROM
+        value: no-reply@demo.local
+  - type: web
+    name: telemed-frontend
+    env: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NEXT_PUBLIC_API_BASE
+        fromService:
+          name: telemed-backend
+          type: web
+          property: url

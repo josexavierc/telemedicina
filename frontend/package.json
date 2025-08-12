@@ -1,0 +1,30 @@
+{
+  "name": "telemed-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zustand": "4.5.2",
+    "react-query": "3.39.3",
+    "@tanstack/react-query": "5.52.2",
+    "clsx": "2.1.1"
+  },
+  "devDependencies": {
+    "typescript": "5.5.4",
+    "@types/node": "20.12.12",
+    "@types/react": "18.2.74",
+    "@types/react-dom": "18.2.24",
+    "autoprefixer": "10.4.19",
+    "postcss": "8.4.40",
+    "tailwindcss": "3.4.10",
+    "eslint": "8.57.0"
+  }
+}
