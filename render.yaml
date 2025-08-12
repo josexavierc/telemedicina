@@ -55,7 +55,4 @@ services:
     startCommand: npm run start
     envVars:
       - key: NEXT_PUBLIC_API_BASE
-        fromService:
-          name: telemed-backend
-          type: web
-          property: url
+        value: https://placeholder-backend-url
