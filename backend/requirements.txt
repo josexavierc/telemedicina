@@ -9,7 +9,7 @@ passlib[bcrypt]==1.7.4
 python-jose[cryptography]==3.3.0
 redis==5.0.7
 celery==5.4.0
-stripe==9.13.0
+stripe==8.5.0
 reportlab==4.2.2
 aiofiles==24.1.0
 starlette==0.38.4
